@@ -1,13 +1,16 @@
 package br.com.teste.presentation.ui.feature.repository
 
+import android.graphics.pdf.PdfDocument
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.paging.PagedList
 import br.com.teste.R
 import br.com.teste.common.extensions.gone
 import br.com.teste.common.extensions.show
 import br.com.teste.common.util.RequestState
+import br.com.teste.data.model.Repository
 import br.com.teste.presentation.base.BaseActivity
 import br.com.teste.presentation.ui.feature.repository.adapter.RepositoryAdapter
 import kotlinx.android.synthetic.main.repositories_activity.*
@@ -63,8 +66,9 @@ class RepositoriesActivity : BaseActivity() {
             }
         })
 
-        viewModel.pagedList.observe(this, Observer {
+        viewModel.pagedList.observe(this, Observer<PagedList<Repository>>{
             adapter.submitList(it)
+
         })
     }
 

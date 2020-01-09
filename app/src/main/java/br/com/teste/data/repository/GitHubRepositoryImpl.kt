@@ -8,7 +8,6 @@ import io.reactivex.schedulers.Schedulers
 class GitHubRepositoryImpl(private val service: GitHubService) : GitHubRepository {
     override fun getRepositories(page: Int): Single<ArrayList<Repository>> {
         return service.getRepositories(page = page)
-            .subscribeOn(Schedulers.io())
             .cache()
             .map { response ->
                 when {

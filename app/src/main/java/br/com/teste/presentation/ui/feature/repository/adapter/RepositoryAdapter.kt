@@ -12,6 +12,12 @@ import kotlinx.android.synthetic.main.list_item_repository.view.*
 
 class RepositoryAdapter : PagedListAdapter<Repository, RepositoryAdapter.RepositoryViewHolder>(DIFF_CALLBACK) {
 
+    override fun onCreateViewHolder(view: ViewGroup, viewType: Int) = RepositoryViewHolder.create(view)
+
+    override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
+
     class RepositoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: Repository?) {
@@ -44,9 +50,4 @@ class RepositoryAdapter : PagedListAdapter<Repository, RepositoryAdapter.Reposit
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = RepositoryViewHolder.create(parent)
-
-    override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
-        holder.bind(getItem(position))
-    }
 }
