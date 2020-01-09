@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.com.teste.common.di.annotation.ViewModelKey
 import br.com.teste.common.di.factory.ViewModelFactory
+import br.com.teste.presentation.ui.feature.pullrequests.PullRequestsViewModel
 import br.com.teste.presentation.ui.feature.repository.RepositoriesViewModel
 import dagger.Binds
 import dagger.Module
@@ -18,5 +19,11 @@ abstract class ViewModelBuilder {
     @IntoMap
     @ViewModelKey(RepositoriesViewModel::class)
     abstract fun bindRepositoriesViewModel(repositoriesViewModel: RepositoriesViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PullRequestsViewModel::class)
+    abstract fun bindPullRequestsViewModel(pullRequestsViewModel: PullRequestsViewModel): ViewModel
+
 
 }

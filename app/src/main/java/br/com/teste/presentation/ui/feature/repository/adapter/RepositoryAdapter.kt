@@ -8,29 +8,41 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import br.com.teste.R
 import br.com.teste.data.model.Repository
+import br.com.teste.presentation.ui.feature.repository.RepositoryClickItem
 import kotlinx.android.synthetic.main.list_item_repository.view.*
+import setSafeOnClickListener
 
-class RepositoryAdapter : PagedListAdapter<Repository, RepositoryAdapter.RepositoryViewHolder>(DIFF_CALLBACK) {
+class RepositoryAdapter(val clickListener: RepositoryClickItem) : PagedListAdapter<Repository, RepositoryAdapter
+.RepositoryViewHolder>
+    (DIFF_CALLBACK) {
 
-    override fun onCreateViewHolder(view: ViewGroup, viewType: Int) = RepositoryViewHolder.create(view)
+    override fun onCreateViewHolder(view: ViewGroup, viewType: Int) = RepositoryViewHolder.create(view, clickListener)
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class RepositoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class RepositoryViewHolder(itemView: View, val clickListener: RepositoryClickItem) :
+        RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: Repository?) {
-            itemView.title.text = item?.name
+            item?.let {
+                itemView.title.text = it.name
+
+                itemView.setSafeOnClickListener {
+                    clickListener.onClick(item)
+                }
+            }
         }
 
         companion object {
-            fun create(parent: ViewGroup) = RepositoryViewHolder(
+            fun create(parent: ViewGroup, clickListener: RepositoryClickItem) = RepositoryViewHolder(
                 LayoutInflater.from(parent.context).inflate(
                     R.layout.list_item_repository,
                     parent,
                     false
-                )
+                ),
+                clickListener
             )
         }
     }
