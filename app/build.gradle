@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "br.com.beblue"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "SERVER_URL", '"https://api.github.com/"'
+        }
+
+        release {
+            buildConfigField "String", "SERVER_URL", '"https://api.github.com/"'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.cardview:cardview:$cardview_version"
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0-alpha01'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxbinding_version"
+
+    // Dagger Dependencies.
+    implementation "com.google.dagger:dagger:2.25.2"
+    kapt "com.google.dagger:dagger-compiler:2.25.2"
+    implementation "com.google.dagger:dagger-android-support:2.25"
+    implementation "com.google.dagger:dagger-android:2.25"
+    kapt "com.google.dagger:dagger-android-processor:2.25"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    // Glide for new way work images
+    implementation "com.github.bumptech.glide:glide:4.9.0"
+    annotationProcessor "com.github.bumptech.glide:compiler:4.9.0"
+
+    implementation "androidx.paging:paging-runtime:2.1.1"
+
+    //Calligraphy
+    implementation "io.github.inflationx:calligraphy3:$calligraphy_version"
+    implementation "io.github.inflationx:viewpump:$viewpump_version"
+    //Circle image view
+    implementation "de.hdodenhof:circleimageview:$circle_imageview_version"
+
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-inline:$mockito_version"
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    androidTestImplementation "androidx.test:runner:$testrunner_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+
+}
