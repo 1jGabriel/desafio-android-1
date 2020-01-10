@@ -35,12 +35,15 @@ class PullRequestsActivity : BaseActivity(), PullRequestClickItem {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pull_requests_activity)
 
+
         init()
     }
 
     private fun init() {
         val creator = intent?.getStringExtra(CREATOR) ?: ""
         val repository = intent?.getStringExtra(REPOSITORY) ?: ""
+
+        supportActionBar?.title = repository
         viewModel.initialize(creator, repository)
         setupObservers()
     }

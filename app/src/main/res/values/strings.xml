@@ -1,9 +1,3 @@
 <resources>
-    <string name="app_name">GitHub Users</string>
-
-    <string name="reposit_rios">Repositórios</string>
-    <string name="seguidores">Seguidores</string>
-    <string name="seguindo">Seguindo</string>
-    <string name="gists">Gists</string>
-    <string name="tentar_novamente">Tentar novamente</string>
+    <string name="app_name">Java Repos</string>
 </resources>

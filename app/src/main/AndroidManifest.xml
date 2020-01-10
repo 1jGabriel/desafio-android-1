@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.ui.feature.pullrequests.PullRequestsActivity"></activity>
+        <activity
+            android:name=".presentation.ui.feature.pullrequests.PullRequestsActivity"
+            android:parentActivityName=".presentation.ui.feature.repository.RepositoriesActivity" />
 
         <activity android:name=".presentation.ui.feature.repository.RepositoriesActivity">
             <intent-filter>

@@ -7,14 +7,14 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import br.com.teste.R
+import br.com.teste.common.extensions.loadImage
 import br.com.teste.data.model.Repository
 import br.com.teste.presentation.ui.feature.repository.RepositoryClickItem
 import kotlinx.android.synthetic.main.list_item_repository.view.*
 import setSafeOnClickListener
 
-class RepositoryAdapter(val clickListener: RepositoryClickItem) : PagedListAdapter<Repository, RepositoryAdapter
-.RepositoryViewHolder>
-    (DIFF_CALLBACK) {
+class RepositoryAdapter(val clickListener: RepositoryClickItem) :
+    PagedListAdapter<Repository, RepositoryAdapter.RepositoryViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(view: ViewGroup, viewType: Int) = RepositoryViewHolder.create(view, clickListener)
 
@@ -27,10 +27,19 @@ class RepositoryAdapter(val clickListener: RepositoryClickItem) : PagedListAdapt
 
         fun bind(item: Repository?) {
             item?.let {
-                itemView.title.text = it.name
 
-                itemView.setSafeOnClickListener {
-                    clickListener.onClick(item)
+                with(itemView) {
+                    title.text = item.name
+                    description.text = item.description
+                    forkCount.text = item.forksCount.toString()
+                    starsCount.text = item.stargazersCount.toString()
+                    username.text = item.owner.login
+
+                    avatar.loadImage(item.owner.avatarUrl)
+
+                    itemView.setSafeOnClickListener {
+                        clickListener.onClick(item)
+                    }
                 }
             }
         }
@@ -61,5 +70,4 @@ class RepositoryAdapter(val clickListener: RepositoryClickItem) : PagedListAdapt
             ) = oldConcert.id == newConcert.id
         }
     }
-
 }

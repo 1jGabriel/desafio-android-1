@@ -3,5 +3,7 @@
     <color name="colorPrimary">#424242</color>
     <color name="colorPrimaryDark">#1b1b1b</color>
     <color name="colorAccent">#FFffff</color>
+    <color name="yellowGitHub">#D78415</color>
+    <color name="blueGitHub">#32629A</color>
 
 </resources>

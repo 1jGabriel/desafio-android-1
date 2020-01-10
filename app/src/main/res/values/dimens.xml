@@ -9,5 +9,8 @@
     <dimen name="dimen_32dp">32dp</dimen>
     <dimen name="font_18sp">18sp</dimen>
     <dimen name="font_14sp">14sp</dimen>
+    <dimen name="card_height_120dp">120dp</dimen>
+    <dimen name="avatar_mini_35dp">35dp</dimen>
+    <dimen name="avatar_medium_size_60dp">60dp</dimen>
 
 </resources>
