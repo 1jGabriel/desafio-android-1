@@ -8,6 +8,7 @@ import androidx.paging.PagedList
 import br.com.teste.R
 import br.com.teste.common.extensions.gone
 import br.com.teste.common.extensions.show
+import br.com.teste.common.extensions.showToast
 import br.com.teste.common.util.RequestState
 import br.com.teste.data.model.Repository
 import br.com.teste.presentation.base.BaseActivity
@@ -55,13 +56,14 @@ class RepositoriesActivity : BaseActivity(), RepositoryClickItem {
 
                 is RequestState.Error -> {
                     hideLoading()
+                    showToast(state.throwable.localizedMessage)
                 }
 
                 is RequestState.Success -> hideLoading()
 
                 is RequestState.Empty -> {
                     hideLoading()
-                    //todo : add empty msgF
+                    showToast("We dont have repositories to show now")
                 }
             }
         })

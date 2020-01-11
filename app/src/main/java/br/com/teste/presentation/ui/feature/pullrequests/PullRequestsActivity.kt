@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import br.com.teste.R
 import br.com.teste.common.extensions.gone
 import br.com.teste.common.extensions.show
+import br.com.teste.common.extensions.showToast
 import br.com.teste.common.util.RequestState
 import br.com.teste.data.model.PullRequest
 import br.com.teste.presentation.base.BaseActivity
@@ -56,6 +57,7 @@ class PullRequestsActivity : BaseActivity(), PullRequestClickItem {
                 }
 
                 is RequestState.Error -> {
+                    showToast(state.throwable.localizedMessage)
                     hideLoading()
                 }
 
@@ -63,7 +65,7 @@ class PullRequestsActivity : BaseActivity(), PullRequestClickItem {
 
                 is RequestState.Empty -> {
                     hideLoading()
-                    //todo : add empty msgF
+                    showToast("This repo dont have pull requests")
                 }
             }
         })

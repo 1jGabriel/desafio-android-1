@@ -32,6 +32,7 @@ class PullRequestsViewModel @Inject constructor(val gitHubRepository: GitHubRepo
     }
 
     private fun handleSuccess(pullRequests: ArrayList<PullRequest>) {
+        mutableState.postValue(RequestState.Success)
         this.pullRequests.value = pullRequests
     }
 
