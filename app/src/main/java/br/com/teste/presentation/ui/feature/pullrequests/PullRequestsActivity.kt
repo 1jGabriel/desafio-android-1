@@ -36,7 +36,6 @@ class PullRequestsActivity : BaseActivity(), PullRequestClickItem {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pull_requests_activity)
 
-
         init()
     }
 
@@ -46,6 +45,7 @@ class PullRequestsActivity : BaseActivity(), PullRequestClickItem {
 
         supportActionBar?.title = repository
         viewModel.initialize(creator, repository)
+        repositoryList.adapter = adapter
         setupObservers()
     }
 
@@ -72,7 +72,6 @@ class PullRequestsActivity : BaseActivity(), PullRequestClickItem {
 
         viewModel.pullRequests.observe(this, Observer {
             adapter.items.addAll(it)
-            repositoryList.adapter = adapter
             adapter.notifyDataSetChanged()
         })
     }
