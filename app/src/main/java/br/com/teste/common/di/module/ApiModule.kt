@@ -26,20 +26,20 @@ class ApiModule {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         val httpClient = OkHttpClient.Builder()
-                .addInterceptor(logging)
-                .addInterceptor {
-                    val requestBuilder = it.request().newBuilder()
-                    requestBuilder.header("Accept", "application/vnd.github.v3+json")
-                    it.proceed(requestBuilder.build())
-                }
-                .build()
+            .addInterceptor(logging)
+            .addInterceptor {
+                val requestBuilder = it.request().newBuilder()
+                requestBuilder.header("Accept", "application/vnd.github.v3+json")
+                it.proceed(requestBuilder.build())
+            }
+            .build()
 
         return Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(ambiente)
-                .client(httpClient)
-                .build()
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .baseUrl(ambiente)
+            .client(httpClient)
+            .build()
     }
 
     @Provides
