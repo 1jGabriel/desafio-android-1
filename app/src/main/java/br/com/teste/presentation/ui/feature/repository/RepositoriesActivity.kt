@@ -17,6 +17,7 @@ import br.com.teste.presentation.ui.feature.repository.adapter.RepositoryAdapter
 import kotlinx.android.synthetic.main.repositories_activity.*
 import javax.inject.Inject
 
+
 class RepositoriesActivity : BaseActivity(), RepositoryClickItem {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

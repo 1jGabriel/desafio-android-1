@@ -1,5 +1,7 @@
 package br.com.teste.data.repository
 
+import br.com.teste.common.extensions.cacheIdlingResource
+import br.com.teste.common.util.EspressoIdlingResource
 import br.com.teste.data.model.PullRequest
 import br.com.teste.data.model.Repository
 import br.com.teste.data.remote.GitHubService
@@ -9,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 class GitHubRepositoryImpl(private val service: GitHubService) : GitHubRepository {
     override fun getRepositories(page: Int): Single<ArrayList<Repository>> {
         return service.getRepositories(page = page)
-            .cache()
+            .cacheIdlingResource()
             .map { response ->
                 when {
                     response.isSuccessful -> {

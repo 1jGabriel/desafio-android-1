@@ -84,5 +84,16 @@ dependencies {
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
     androidTestImplementation "androidx.test:runner:$testrunner_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
+
+    androidTestImplementation 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
+
+
+
+    androidTestImplementation "androidx.test:core:$testrunner_version"
+
+    androidTestImplementation "androidx.test.ext:junit-ktx:$testrunner_version"
+
 
 }

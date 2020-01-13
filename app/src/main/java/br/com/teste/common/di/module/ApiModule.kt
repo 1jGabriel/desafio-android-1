@@ -1,5 +1,6 @@
 package br.com.teste.common.di.module
 
+import androidx.test.espresso.IdlingResource
 import br.com.teste.BuildConfig
 import br.com.teste.data.remote.GitHubService
 import dagger.Module
