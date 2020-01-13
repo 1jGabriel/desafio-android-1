@@ -57,7 +57,7 @@ class RepositoriesActivityTest {
             )
         )
 
-        onView(withId(R.id.containerSecondScreen)).check(matches(isDisplayed()))
+        onView(withId(R.id.pullRequestsContainer)).check(matches(isDisplayed()))
 
     }
 }

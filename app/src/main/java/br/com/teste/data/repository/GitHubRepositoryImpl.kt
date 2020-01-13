@@ -25,7 +25,7 @@ class GitHubRepositoryImpl(private val service: GitHubService) : GitHubRepositor
     override fun getPullRequests(creator: String, repository: String): Single<ArrayList<PullRequest>> {
         return service.getPullRequests(creator, repository)
             .subscribeOn(Schedulers.io())
-            .cache()
+            .cacheIdlingResource()
             .map { response ->
                 when {
                     response.isSuccessful -> {

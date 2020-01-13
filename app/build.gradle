@@ -79,6 +79,7 @@ dependencies {
 
     //Mockk
     testImplementation("io.mockk:mockk:1.9.3.kotlin12")
+
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-inline:$mockito_version"
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
@@ -86,8 +87,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
     implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
-
-    androidTestImplementation 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
 
 
 
