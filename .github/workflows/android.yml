@@ -42,7 +42,7 @@ jobs:
           api-level: ${{ matrix.api-level }}
           arch: ${{ matrix.arch }}
           profile: Nexus 5X
-          script: ./gradlew app:connectedMockDebugAndroidTest connectedDebugAndroidTest
+          script: /bin/sh ./gradlew app:connectedMockDebugAndroidTest connectedDebugAndroidTest
         env:
           CI: true
           JAVA_TOOL_OPTIONS: -Xmx3g
