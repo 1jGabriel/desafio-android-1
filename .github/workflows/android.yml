@@ -3,6 +3,21 @@ name: Android CI
 on: [push]
 
 jobs:
+  ktlint:
+    name: Check Code Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: ktlint
+        uses: ScaCap/action-ktlint@master
+        with:
+          github_token: ${{ secrets.token_ktlint }}
+          reporter: github-pr-review # Change reporter:
+
   test:
     name: Run Unit Tests
     runs-on: ubuntu-18.04
